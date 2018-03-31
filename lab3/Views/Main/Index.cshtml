@@ -1,0 +1,79 @@
+﻿@model lab3.ViewModels.IndexViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+<style type="text/css">
+    th, td {
+        padding-right: 15px;
+    }
+</style>
+
+<div>
+    <hr style="border-top: 3px double #8c8b8b;" />
+    <table style="margin:0px auto; width:500px">
+        <caption>Tour kinds</caption>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Constraints</th>
+        </tr>
+        @foreach (var tourKind in Model.TourKinds)
+        {
+            <tr>
+                <td>@tourKind.Name</td>
+                <td>@tourKind.Description</td>
+                <td>@tourKind.Constraints</td>
+            </tr>
+        }
+
+    </table>
+
+    <hr style="border-top: 3px double #8c8b8b;" />
+
+    <table style="margin:0px auto; width:500px">
+        <caption>Clients</caption>
+        <tr>
+            <th>Name</th>
+            <th>Birthday</th>
+            <th>Phone number</th>
+            <th>Address</th>
+        </tr>
+        @foreach (var client in Model.Clients)
+        {
+            <tr>
+                <td>@client.Name</td>
+                <td>@client.Birthday.ToShortDateString()</td>
+                <td>@client.Phone</td>
+                <td>@client.Address</td>
+            </tr>
+        }
+
+    </table>
+
+    <hr style="border-top: 3px double #8c8b8b;" />
+    <table style="margin:0px auto; width:500px">
+        <caption>Tours</caption>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Start date</th>
+            <th>End date</th>
+            <th>Tour kind Id</th>
+            <th>Client Id</th>
+        </tr>
+        @foreach (var tour in Model.Tours)
+        {
+            <tr>
+                <td>@tour.Name</td>
+                <td>@tour.Price</td>
+                <td>@tour.StartDate.ToShortDateString()</td>
+                <td>@tour.EndDate.ToShortDateString()</td>
+                <td>@tour.TourKindId</td>
+                <td>@tour.ClientId</td>
+            </tr>
+        }
+
+    </table>
+
+    <hr style="border-top: 3px double #8c8b8b;" />
+</div>

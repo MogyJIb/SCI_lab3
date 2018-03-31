@@ -1,0 +1,76 @@
+﻿@model lab3.ViewModels.ClientViewModel
+
+@{
+    ViewData["Title"] = "Clients";
+}
+
+<style type="text/css">
+    th, td {
+        padding-right: 15px;
+    }
+</style>
+
+<hr style="border-top: 3px double #8c8b8b;" />
+<div>
+    <form class="form-inline" method="post" style=" width:300px;margin:0px auto;">
+
+        @if (Model.Client != null)
+        {
+            @Html.Label("Name:");
+            @Html.TextBox("Name", Model.Client.Name);
+            <br />
+            @Html.Label("BirthDay:");
+            <input type="date" id="BirthDay" name="BirthDay" value="@Model.Client.Birthday.ToString("yyyy-MM-dd")" />
+            <br />
+            @Html.Label("Phone:");
+            @Html.TextBox("Phone", Model.Client.Phone);
+            <br />
+            @Html.Label("Address:");
+            @Html.TextBox("Address", Model.Client.Address);
+            <br />
+        }
+        else
+        {
+            @Html.Label("Name:");
+            @Html.TextBox("Name");
+            <br />
+            @Html.Label("BirthDay:");
+            <input type="date" id="BirthDay" name="BirthDay" />
+            <br />
+            @Html.Label("Phone:");
+            @Html.TextBox("Phone");
+            <br />
+            @Html.Label("Address:");
+            @Html.TextBox("Address");
+            <br />
+        }
+
+
+        <input type="submit" value="Add" />
+    </form>
+</div>
+<hr style="border-top: 3px double #8c8b8b;" />
+
+<table style="margin:0px auto; width:500px">
+    <caption>Clients</caption>
+    <tr>
+        <th>Name</th>
+        <th>Birthday</th>
+        <th>Phone number</th>
+        <th>Address</th>
+    </tr>
+    @foreach (var client in Model.Clients)
+    {
+        <tr>
+            <td>@client.Name</td>
+            <td>@client.Birthday.ToShortDateString()</td>
+            <td>@client.Phone</td>
+            <td>@client.Address</td>
+        </tr>
+    }
+
+</table>
+
+
+<hr style="border-top: 3px double #8c8b8b;" />
+

@@ -1,0 +1,104 @@
+﻿@model lab3.ViewModels.TourViewModel
+
+@{
+    ViewData["Title"] = "Tours";
+}
+
+<style type="text/css">
+    th, td {
+        padding-right: 15px;
+    }
+</style>
+
+<hr style="border-top: 3px double #8c8b8b;" />
+<div>
+
+
+    <form class="form-inline" method="post" style="margin:0px auto; width:300px;">
+        @if (Model.Tour != null)
+        {
+
+            @Html.Label("Name:");
+            @Html.TextBox("Name", Model.Tour.Name);
+            <br />
+
+            @Html.Label("Price:");
+            @Html.TextBox("Price", Model.Tour.Price);
+            <br />
+
+            @Html.Label("Start date:")
+            <input type="date" id="StartDate" name="StartDate" value="@Model.Tour.StartDate.ToString("yyyy-MM-dd")" />
+            <br />
+
+            @Html.Label("End date:")
+            <input type="date" id="EndDate" name="EndDate" value="@Model.Tour.EndDate.ToString("yyyy-MM-dd")" />
+            <br />
+
+            @Html.Label("Tour kind:")
+            @Html.DropDownList("TourKindId", new SelectList(new int[] { 1, 2, 3, 4, 5 }))
+            <br />
+
+            @Html.Label("Client:")
+            @Html.DropDownList("ClientId", new SelectList(new int[] { 1, 2, 3, 4, 5 }))
+            <br />
+        }
+        else
+        {
+
+            @Html.Label("Name:")
+            @Html.TextBox("Name")
+            <br />
+            @Html.Label("Price:")
+            @Html.TextBox("Price")
+            <br />
+
+            @Html.Label("Start date:")
+            <input type="date" id="StartDate" name="StartDate" />
+            <br />
+
+            @Html.Label("End date:")
+            <input type="date" id="EndDate" name="EndDate" />
+            <br />
+
+            @Html.Label("Tour kind:")
+            @Html.DropDownList("TourKindId", new SelectList(new int[] { 1, 2, 3, 4, 5 }))
+            <br />
+
+            @Html.Label("Client:")
+            @Html.DropDownList("ClientId", new SelectList(new int[] { 1, 2, 3, 4, 5 }))
+            <br />
+        }
+        <input type="submit" value="Add" />
+    </form>
+</div>
+<div style="clear:both"></div>
+<hr style="border-top: 3px double #8c8b8b;" />
+
+<table style="margin:0px auto; width:500px">
+    <caption>Tours</caption>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Start date</th>
+        <th>End date</th>
+        <th>Tour kind Id</th>
+        <th>Client Id</th>
+    </tr>
+    @foreach (var tour in Model.Tours)
+    {
+        <tr>
+            <td>@tour.Name</td>
+            <td>@tour.Price</td>
+            <td>@tour.StartDate.ToShortDateString()</td>
+            <td>@tour.EndDate.ToShortDateString()</td>
+            <td>@tour.TourKindId</td>
+            <td>@tour.ClientId</td>
+        </tr>
+    }
+
+</table>
+
+
+<hr style="border-top: 3px double #8c8b8b;" />
+
+
